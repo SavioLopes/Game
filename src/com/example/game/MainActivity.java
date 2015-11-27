@@ -2,9 +2,7 @@ package com.example.game;
 
 import java.util.Map;
 
-import org.json.JSONException;
 import org.json.JSONObject;
-
 import android.support.v7.app.ActionBarActivity;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
@@ -19,7 +17,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
 @SuppressWarnings("deprecation")
@@ -36,17 +33,9 @@ import android.widget.Toast;
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 TextView text = (TextView) findViewById(R.id.textView1);
-                text.setText("Sávio");
-                
-                String url = "http://rest-service.guides.spring.io/greeting"; 
-				//JSONObject obj = rest.get("http://rest-service.guides.spring.io/greeting");
-				//Toast.makeText(getApplicationContext(), obj.getString("id"), Toast.LENGTH_SHORT).show();
+                text.setText("É tetra !!!");
+                String url = "http://rest-service.guides.spring.io/greeting";
 				new doRequest(MainActivity.this, null, "GET", url).execute();
-				//JSONObject obj = rest.request(url, "GET", null);
-				//text.setText(obj.getInt("id"));
-				//Toast.makeText(getApplicationContext(), obj.getString("id"), Toast.LENGTH_SHORT).show();
-                
-                
             }
         });
     }
@@ -71,7 +60,7 @@ import android.widget.Toast;
     }
     
     
-private class doRequest extends AsyncTask<Void, JSONObject, JSONObject>{
+    private class doRequest extends AsyncTask<Void, JSONObject, JSONObject>{
 		
 		// Store context for dialogs
 		private Context context = null;
