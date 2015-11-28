@@ -33,7 +33,7 @@ public class MainActivity extends ActionBarActivity {
 		button.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				TextView text = (TextView) findViewById(R.id.textView1);
-				text.setText("É tetra !!!");
+				text.setText("É tetra [2] !!!");
 				String url = "http://gameserver-saviolopes.rhcloud.com/login";//"http://rest-service.guides.spring.io/greeting";
 				exemplo_simples(url);
 			}
