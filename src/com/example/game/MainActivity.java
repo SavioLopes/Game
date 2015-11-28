@@ -34,7 +34,7 @@ public class MainActivity extends ActionBarActivity {
 			public void onClick(View v) {
 				TextView text = (TextView) findViewById(R.id.textView1);
 				text.setText("É tetra !!!");
-				String url = "http://rest-service.guides.spring.io/greeting";
+				String url = "http://gameserver-saviolopes.rhcloud.com/login";//"http://rest-service.guides.spring.io/greeting";
 				exemplo_simples(url);
 			}
 		});
