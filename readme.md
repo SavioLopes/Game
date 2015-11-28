@@ -1,4 +1,5 @@
-Projeto Game \n
-	S..\n
-	Renato Caruso\n
-	A..
+Projeto Game 
+	Savio
+	Renato Caruso
+	André 
+
