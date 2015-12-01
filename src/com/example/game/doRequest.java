@@ -11,6 +11,17 @@ import android.view.Gravity;
 import android.widget.TextView;
 
 public class doRequest extends AsyncTask<Void, JSONObject, JSONObject> {
+	
+	private JSONObject dataResponse = new JSONObject();
+	private boolean requested = false;
+	
+	public boolean isRequested() {
+		return this.requested;
+	}
+
+	public JSONObject getDataResponse() {
+		return this.dataResponse;
+	}
 
 	AndrestClient rest = new AndrestClient();
 	// Store context for dialogs
@@ -33,26 +44,33 @@ public class doRequest extends AsyncTask<Void, JSONObject, JSONObject> {
 	}
 
 	@Override
-	protected JSONObject doInBackground(Void... arg0) {
+	public JSONObject doInBackground(Void... arg0) {
 		try {
 
-			return rest.request(url, method, data); // Do request
+			this.dataResponse = rest.request(url, method, data); // Do request;
+			this.requested = true;
+			return this.dataResponse;
+			
 		} catch (Exception e) {
+			requested = true;
 			this.e = e; // Store error
 		}
 		return null;
 	}
 
 	@Override
-	protected void onPostExecute(JSONObject data) {
+	public void onPostExecute(JSONObject data) {
 		super.onPostExecute(data);
 		// Display based on error existence
 		if (e != null) {
+			requested = true;
 			new ResponseDialog(context, "We found an error!", e.getMessage())
 					.showDialog();
 		} else {
-			new ResponseDialog(context, "Success!", data.toString())
-					.showDialog();
+			dataResponse = data;
+			requested = true;
+			
+			//new ResponseDialog(context, "Success!", data.toString()).showDialog();
 		}
 	}
 }
