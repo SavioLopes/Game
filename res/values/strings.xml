@@ -12,5 +12,6 @@
     <string name="label_user_id">UserId</string>
     <string name="label_button_get_message">Buscar Mensagens</string>
     <string name="title_activity_login">LoginActivity</string>
+    <string name="title_activity_cadastro">Cadastro</string>
 
 </resources>
