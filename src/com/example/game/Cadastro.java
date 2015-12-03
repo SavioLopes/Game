@@ -37,22 +37,23 @@ import android.view.MenuItem;
 					
 					@Override
 					public void onClick(View v) {
-						if (!validateEmail1(email1.getText().toString())) {
+						if (!validateEmail(email1.getText().toString())) {
 							email1.setError("Email Inválido");
 							email1.requestFocus();
-						} else if (!validateEmail2(email2.getText().toString())) {
-							email2.setError("Email Inválido");
-							email2.requestFocus();
-						} 
-						else if (!validatePassword1(password1.getText().toString())) {
+						}
+						else if (!validateEmail(email2.getText().toString())) {
+							password1.setError("Password Inválida");
+							email1.requestFocus();
+						}
+						else if (!validatePassword(password1.getText().toString())) {
 							password1.setError("Password Inválida");
 							email1.requestFocus();
 						} 
-						else if (!validatePassword2(password2.getText().toString())) {
-							password2.setError("Password Inválida");
-							email2.requestFocus();
-						
-						}else {
+						else if (!validatePassword(password2.getText().toString())) {
+							password1.setError("Password Inválida");
+							email1.requestFocus();
+						} 
+						else {
 							Toast.makeText(Cadastro.this, "Validação com sucesso", Toast.LENGTH_LONG).show();
 						}
 						
@@ -61,39 +62,24 @@ import android.view.MenuItem;
 		        
 		    }
 		    // Retorna true se a senha é válida e false se a senha é inválida
-			protected boolean validatePassword1(String password1) {
-				if (password1!=null && password1.length()>=6) {
+			protected boolean validatePassword(String password) {
+				if (password!=null && password.length()>=6) {
 					return true;
 				} else {
 					return false;	
 				}
 				
 			}
-			
-			protected boolean validatePassword2(String password2) {
-				if (password2!=null && password2.length()>=6) {
-					return true;
-				} else {
-					return false;	
-				}
-				
-			}
+
 			
 			// Retorna true se o email1 é válido e false se o email1 é inválido
-			protected boolean validateEmail1(String email1) {
+			protected boolean validateEmail(String email) {
 				String emailPattern = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
 				
 				Pattern pattern = Pattern.compile(emailPattern);
-				Matcher matcher = pattern.matcher(email1);
+				Matcher matcher = pattern.matcher(email);
 				return matcher.matches();
 			}
 			
-			// Retorna true se o email2 é válido e false se o email2 é inválido
-			protected boolean validateEmail2(String email2) {
-				String emailPattern = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
-				
-				Pattern pattern = Pattern.compile(emailPattern);
-				Matcher matcher = pattern.matcher(email2);
-				return matcher.matches();
-			}
+
 }
